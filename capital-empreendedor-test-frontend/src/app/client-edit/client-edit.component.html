@@ -1,0 +1,28 @@
+<button (click)="goBack()">Go back</button>
+<div *ngIf="client">
+    <h3 class="opportunitiesHeader">{{ client.name }} opportunities</h3>
+    <div *ngIf="opportunities">
+        <li *ngFor="let opportunity of opportunities">
+            <div><span>Name: </span>{{ opportunity.name }}</div>
+            <div><span>Limit: </span>{{ opportunity.limit }}</div>
+            <div><span>Interest: </span>{{ opportunity.interest }}</div>
+            <div><span>Term: </span>{{ opportunity.term }}</div>
+            <div><span>Active: </span>
+                <label for="{{ opportunity.name + 'active' }}">
+                    <input [checked]="opportunity.isActive"
+                    id="{{ opportunity.name + 'active' }}"
+                    type="radio" name="{{opportunity.name}}" value="Yes">
+                    Yes
+                </label>
+                <label for="{{ opportunity.name + 'notActive' }}">
+                    <input [checked]="!opportunity.isActive"
+                    id="{{ opportunity.name + 'notActive' }}"
+                    type="radio" name="{{ opportunity.name }}" value="No">
+                    No
+                </label>
+            </div>
+        </li>
+    </div>
+    <!-- Add opportunity -->
+    <button (click)="saveChanges()">Save Changes</button>
+</div>

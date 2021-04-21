@@ -1,0 +1,11 @@
+<div class="background">
+    <h2 class="clientsTitle">Clients</h2>
+
+    <ul class="clients">
+        <li *ngFor="let client of clients" >
+            <a routerLink="/{{client.email}}">
+                <span class="badge">{{ client.name }}</span> {{ client.email }}
+            </a>
+        </li>
+    </ul>
+</div>

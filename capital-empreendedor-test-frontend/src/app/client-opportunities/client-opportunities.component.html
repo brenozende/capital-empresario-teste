@@ -1,0 +1,25 @@
+<button (click)="goBack()">Go back</button>
+<div *ngIf="client">
+    <h2 class="detailsHeader">{{ client.name }} details</h2>
+    <div><span>Name: </span>{{ client.name }}</div>
+    <div><span>e-mail: </span>{{ client.email }}</div>
+    <div><span>Phone: </span>{{ client.phone }}</div>
+    <div><span>Revenue: </span>{{ client.revenue }}</div>
+    <button (click)="toggleOpportunities()">Show/hide opportunities</button>
+    
+</div>
+<div class="opportunities-text" *ngIf="opp">
+    <div *ngIf="client">
+        <h3 class="opportunitiesHeader">{{ client.name }} opportunities</h3>
+        <div *ngIf="opportunities">
+            <li *ngFor="let opportunity of opportunities">
+                <div><span>Name: </span>{{ opportunity.name }}</div>
+                <div><span>Limit: </span>{{ opportunity.limit }}</div>
+                <div><span>Interest: </span>{{ opportunity.interest }}</div>
+                <div><span>Term: </span>{{ opportunity.term }}</div>
+                <div><span>Active: </span>{{ opportunity.isActive }}</div>
+                <a routerLink="/{{client.email}}/{{opportunity.name}}/edit"><button class="edit-button">Change Status</button></a>
+            </li>
+        </div>
+    </div>
+</div>
